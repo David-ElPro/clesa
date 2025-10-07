@@ -1,0 +1,366 @@
+<!DOCTYPE html>
+<html lang="es" class="scroll-smooth">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Bachillerato General Plan - CLESA</title>
+    
+    <!-- Google Fonts: Inter -->
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&display=swap" rel="stylesheet">
+    
+    <!-- Todos los estilos CSS -->
+    <style>
+        /* CSS Reset and Base Styles */
+        :root {
+            --clesa-navy: #0A192F;
+            --clesa-gold: #FFD700;
+            --clesa-light-gray: #F8F9FA;
+            --clesa-mid-blue: #3C5B6F;
+            --clesa-dark-blue: #2c3e50;
+            --clesa-teal: #1abc9c;
+            --clesa-light-blue: #3498db;
+            --text-gray-800: #1F2937;
+            --text-gray-600: #4B5563;
+            --text-gray-300: #D1D5DB;
+            --white: #FFFFFF;
+        }
+
+        *, *::before, *::after {
+            box-sizing: border-box;
+            margin: 0;
+            padding: 0;
+        }
+
+        html { scroll-behavior: smooth; }
+
+        body {
+            font-family: 'Inter', sans-serif;
+            background-color: var(--white);
+            color: var(--text-gray-800);
+            line-height: 1.6;
+            animation: fadeIn 0.5s ease-in-out;
+            overflow-x: hidden;
+        }
+        
+        @keyframes fadeIn {
+            from { opacity: 0; transform: translateY(10px); }
+            to { opacity: 1; transform: translateY(0); }
+        }
+
+        a { color: inherit; text-decoration: none; }
+        img { max-width: 100%; display: block; }
+
+        /* Utility Classes */
+        .container {
+            width: 100%;
+            max-width: 1280px;
+            margin-left: auto;
+            margin-right: auto;
+            padding-left: 1.5rem;
+            padding-right: 1.5rem;
+        }
+
+        /* Header & Navigation */
+        .header {
+            background-color: rgba(255, 255, 255, 0.8);
+            backdrop-filter: blur(10px);
+            box-shadow: 0 4px 6px -1px rgba(0, 0, 0, 0.1);
+            position: sticky; top: 0; z-index: 50;
+        }
+        .navbar {
+            display: flex; align-items: center; justify-content: space-between;
+            padding-top: 1rem; padding-bottom: 1rem;
+        }
+        .logo { font-size: 1.5rem; font-weight: 700; color: var(--clesa-navy); }
+        .desktop-menu { display: none; align-items: center; gap: 1.5rem; }
+        .nav-link { color: var(--clesa-navy); transition: color 0.3s ease; }
+        .nav-link:hover { color: var(--clesa-gold); }
+        .mobile-menu-button { display: block; background: none; border: none; cursor: pointer; }
+        .mobile-menu-button svg { width: 1.5rem; height: 1.5rem; color: var(--clesa-navy); }
+        .mobile-menu { display: none; margin-top: 1rem; }
+        .mobile-menu-link { display: block; padding: 0.5rem 1rem; font-size: 0.875rem; color: var(--clesa-navy); border-radius: 0.375rem; }
+        .mobile-menu-link:hover { background-color: var(--clesa-light-gray); }
+
+        /* Main Content */
+        .main-content {
+            padding-top: 4rem;
+            padding-bottom: 4rem;
+        }
+
+        .page-header {
+            text-align: center;
+            margin-bottom: 2rem;
+        }
+        .page-header h1 {
+            font-size: 2.5rem;
+            font-weight: 800;
+            color: var(--clesa-navy);
+            text-transform: uppercase;
+            letter-spacing: 1.5px;
+        }
+
+        .image-banner {
+            height: 250px;
+            background-image: url('https://images.unsplash.com/photo-1509062522246-3755977927d7?q=80&w=2132&auto=format&fit=crop');
+            background-size: cover;
+            background-position: center;
+            border-radius: 0.75rem;
+            margin-bottom: 4rem;
+            box-shadow: 0 10px 20px rgba(0,0,0,0.1);
+        }
+       
+        .semesters-grid {
+            display: grid;
+            grid-template-columns: 1fr;
+            gap: 2rem;
+        }
+
+        .semester-card {
+            color: var(--white);
+            padding: 2rem;
+            border-radius: 0.75rem;
+            box-shadow: 0 4px 6px -1px rgba(0, 0, 0, 0.1);
+            transition: transform 0.3s ease, box-shadow 0.3s ease;
+            animation: fadeIn 0.5s ease-in-out forwards;
+            opacity: 0;
+        }
+        
+        .semester-card:hover {
+            transform: translateY(-8px) scale(1.03);
+            box-shadow: 0 12px 20px -4px rgba(0, 0, 0, 0.2);
+        }
+        
+        /* Staggered animation for cards */
+        .semester-card:nth-child(1) { animation-delay: 0.1s; }
+        .semester-card:nth-child(2) { animation-delay: 0.2s; }
+        .semester-card:nth-child(3) { animation-delay: 0.3s; }
+        .semester-card:nth-child(4) { animation-delay: 0.4s; }
+        .semester-card:nth-child(5) { animation-delay: 0.5s; }
+        .semester-card:nth-child(6) { animation-delay: 0.6s; }
+
+        /* Card color variations */
+        .card-teal { background: linear-gradient(135deg, #16a085, var(--clesa-teal)); }
+        .card-light-blue { background: linear-gradient(135deg, #2980b9, var(--clesa-light-blue)); }
+        .card-dark-blue { background: linear-gradient(135deg, #2c3e50, #34495e); }
+        
+        .semester-card h2 {
+            font-size: 1.5rem;
+            font-weight: 700;
+            margin-bottom: 1.5rem;
+            border-bottom: 2px solid rgba(255,255,255,0.5);
+            padding-bottom: 0.75rem;
+        }
+        .semester-card ul {
+            list-style: none;
+        }
+        .semester-card li {
+            position: relative;
+            padding-left: 1.5rem;
+            margin-bottom: 0.75rem;
+        }
+        .semester-card li::before {
+            content: '•';
+            position: absolute;
+            left: 0;
+            color: var(--white);
+            font-weight: bold;
+            font-size: 1.2rem;
+        }
+        
+        /* Footer */
+        .footer { background-color: var(--clesa-navy); color: var(--white); padding: 4rem 0; }
+        .footer-grid { display: grid; grid-template-columns: 1fr; gap: 3rem; margin-bottom: 2rem; }
+        .footer-column h4 { font-size: 1.25rem; font-weight: 700; color: var(--clesa-gold); margin-bottom: 0.75rem; }
+        .footer-column p { color: var(--text-gray-300); margin-bottom: 0.5rem; }
+        .footer-bottom { border-top: 1px solid #374151; padding-top: 2rem; display: flex; flex-direction: column; justify-content: space-between; align-items: center; }
+        .social-icons { display: flex; gap: 1rem; margin-bottom: 1rem; }
+        .social-icons a { color: #9CA3AF; transition: color 0.3s ease; }
+        .social-icons a:hover { color: var(--white); }
+        .social-icons svg { height: 1.5rem; width: 1.5rem; }
+        .footer-legal { text-align: center; }
+        .footer-legal a, .footer-legal p { font-size: 0.875rem; color: #9CA3AF; }
+        .footer-legal a:hover { color: var(--white); }
+        .footer-legal p { margin-top: 0.25rem; color: #6B7280; }
+
+        /* Responsive Styles */
+        @media (min-width: 768px) {
+            .desktop-menu { display: flex; }
+            .mobile-menu-button { display: none; }
+            .semesters-grid { grid-template-columns: repeat(2, 1fr); }
+            .footer-grid { grid-template-columns: repeat(3, 1fr); }
+            .footer-bottom { flex-direction: row; }
+            .social-icons { margin-bottom: 0; }
+            .footer-legal { text-align: right; }
+        }
+        
+        @media (min-width: 1024px) {
+            .semesters-grid { grid-template-columns: repeat(3, 1fr); }
+        }
+    </style>
+</head>
+<body>
+
+    <!-- Header & Navigation -->
+    <header class="header">
+        <nav class="container navbar">
+            <a href="index.html" class="logo">CLESA</a>
+            <div class="desktop-menu">
+                <a href="index.html" class="nav-link">Inicio</a>
+                <a href="index.html#oferta" class="nav-link">Oferta Académica</a>
+                <a href="nosotros.html" class="nav-link">Nosotros</a>
+                <a href="#" class="nav-link">Testimonios</a>
+                <a href="#" class="nav-link">Novedades</a>
+                <a href="#" class="nav-link">Contacto</a>
+            </div>
+            <button id="mobile-menu-button" class="mobile-menu-button">
+                <svg fill="none" stroke="currentColor" viewBox="0 0 24" xmlns="http://www.w3.org/2000/svg"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M4 6h16M4 12h16m-7 6h7"></path></svg>
+            </button>
+        </nav>
+        <!-- Mobile Menu -->
+        <div id="mobile-menu" class="mobile-menu container">
+            <a href="index.html" class="mobile-menu-link">Inicio</a>
+            <a href="index.html#oferta" class="mobile-menu-link">Oferta Académica</a>
+            <a href="nosotros.html" class="mobile-menu-link">Nosotros</a>
+            <a href="#" class="mobile-menu-link">Testimonios</a>
+            <a href="#" class="mobile-menu-link">Novedades</a>
+            <a href="#" class="mobile-menu-link">Contacto</a>
+        </div>
+    </header>
+
+    <!-- Main Content -->
+    <main class="main-content">
+        <div class="container">
+            <header class="page-header">
+                <h1>General Plan 2 Años</h1>
+            </header>
+            
+            <div class="image-banner"></div>
+            
+            <div class="semesters-grid">
+                <!-- Card 1 -->
+                <div class="semester-card card-teal">
+                    <h2>PRIMER CUATRIMESTRE</h2>
+                    <ul>
+                        <li>Matemáticas I</li>
+                        <li>Química I</li>
+                        <li>Ética y Valores I</li>
+                        <li>Introducción a las Ciencias Sociales</li>
+                        <li>Taller de Lectura y Redacción I</li>
+                        <li>Lengua Adicional Español I</li>
+                        <li>Informática I</li>
+                        <li>Orientación Educativa</li>
+                    </ul>
+                </div>
+                <!-- Card 2 -->
+                <div class="semester-card card-light-blue">
+                    <h2>SEGUNDO CUATRIMESTRE</h2>
+                    <ul>
+                        <li>Matemáticas II</li>
+                        <li>Química II</li>
+                        <li>Ética y Valores II</li>
+                        <li>Historia de México I</li>
+                        <li>Taller de Lectura y Redacción II</li>
+                        <li>Lengua Adicional al Español II</li>
+                        <li>Informática II</li>
+                        <li>Apreciación Artística</li>
+                    </ul>
+                </div>
+                <!-- Card 3 -->
+                <div class="semester-card card-dark-blue">
+                    <h2>TERCER CUATRIMESTRE</h2>
+                    <ul>
+                        <li>Matemáticas III</li>
+                        <li>Biología I</li>
+                        <li>Física I</li>
+                        <li>Historia de México II</li>
+                        <li>Literatura I</li>
+                        <li>Lengua Adicional al Español III</li>
+                        <li>Principios de la Administración</li>
+                        <li>Fases del Proceso Administrativo</li>
+                    </ul>
+                </div>
+                <!-- Card 4 -->
+                <div class="semester-card card-light-blue">
+                    <h2>CUARTO CUATRIMESTRE</h2>
+                    <ul>
+                        <li>Matemáticas IV</li>
+                        <li>Biología II</li>
+                        <li>Física II</li>
+                        <li>Estructura Socioeconómica de México</li>
+                        <li>Literatura II</li>
+                        <li>Lengua Adicional al Español IV</li>
+                        <li>Producción, Logística y Distribución</li>
+                        <li>Administración del Capital Humano</li>
+                    </ul>
+                </div>
+                <!-- Card 5 -->
+                <div class="semester-card card-dark-blue">
+                    <h2>QUINTO CUATRIMESTRE</h2>
+                    <ul>
+                        <li>Geografía</li>
+                        <li>Historia Universal Contemporánea</li>
+                        <li>Matemáticas Financieras I</li>
+                        <li>Economía I</li>
+                        <li>Derecho I</li>
+                        <li>Ciencias de la Comunicación I</li>
+                        <li>Administración Financiera</li>
+                        <li>Mercadotecnia</li>
+                    </ul>
+                </div>
+                <!-- Card 6 -->
+                <div class="semester-card card-teal">
+                    <h2>SEXTO CUATRIMESTRE</h2>
+                    <ul>
+                        <li>Filosofía</li>
+                        <li>Ecología y Medio Ambiente</li>
+                        <li>Metodología de la Investigación</li>
+                        <li>Matemáticas Financieras II</li>
+                        <li>Economía II</li>
+                        <li>Derecho II</li>
+                        <li>Ciencias de la Comunicación II</li>
+                        <li>Planificación y Gestión de Negocios</li>
+                        <li>Liderazgo</li>
+                    </ul>
+                </div>
+            </div>
+        </div>
+    </main>
+
+    <!-- Footer -->
+    <footer class="footer">
+        <div class="container">
+            <div class="footer-grid">
+                <div class="footer-column"><h4>Sede Morelos</h4><p>Av. Universidad 123, Col. Chamilpa, Cuernavaca, Morelos.</p><p>contacto.mor@clesa.edu</p><p>(777) 123 4567</p></div>
+                <div class="footer-column"><h4>Sede Puebla</h4><p>Blvd. Atlixco 456, Col. La Paz, Puebla, Puebla.</p><p>contacto.pue@clesa.edu</p><p>(222) 765 4321</p></div>
+                <div class="footer-column"><h4>Sede San Luis Potosí</h4><p>Calle 5 de Mayo 789, Centro Histórico, San Luis Potosí.</p><p>contacto.slp@clesa.edu</p><p>(444) 987 6543</p></div>
+            </div>
+            <div class="footer-bottom">
+                <div class="social-icons">
+                    <a href="#"><svg fill="currentColor" viewBox="0 0 24 24" aria-hidden="true"><path fill-rule="evenodd" d="M22 12c0-5.523-4.477-10-10-10S2 6.477 2 12c0 4.991 3.657 9.128 8.438 9.878v-6.987h-2.54V12h2.54V9.797c0-2.506 1.492-3.89 3.777-3.89 1.094 0 2.238.195 2.238.195v2.46h-1.26c-1.243 0-1.63.771-1.63 1.562V12h2.773l-.443 2.89h-2.33v6.988C18.343 21.128 22 16.991 22 12z" clip-rule="evenodd" /></svg></a>
+                    <a href="#"><svg fill="currentColor" viewBox="0 0 24 24" aria-hidden="true"><path fill-rule="evenodd" d="M12.315 2c2.43 0 2.784.013 3.808.06 1.064.049 1.791.218 2.427.465a4.902 4.902 0 011.772 1.153 4.902 4.902 0 011.153 1.772c.247.636.416 1.363.465 2.427.048 1.024.06 1.378.06 3.808s-.012 2.784-.06 3.808c-.049 1.064-.218 1.791-.465 2.427a4.902 4.902 0 01-1.153 1.772 4.902 4.902 0 01-1.772 1.153c-.636.247-1.363.416-2.427.465-1.024.048-1.378.06-3.808.06s-2.784-.012-3.808-.06c-1.064-.049-1.791.218-2.427-.465a4.902 4.902 0 01-1.772-1.153 4.902 4.902 0 01-1.153-1.772c-.247-.636-.416 1.363-.465-2.427-.048-1.024-.06-1.378-.06-3.808s.012-2.784.06-3.808c.049-1.064.218-1.791.465-2.427a4.902 4.902 0 011.153-1.772A4.902 4.902 0 016.343 2.525c.636-.247 1.363-.416 2.427.465C9.792 2.013 10.146 2 12.315 2zM12 7a5 5 0 100 10 5 5 0 000-10zm0 8a3 3 0 110-6 3 3 0 010 6zm5.75-9.25a1.25 1.25 0 100-2.5 1.25 1.25 0 000 2.5z" clip-rule="evenodd" /></svg></a>
+                    <a href="#"><svg fill="currentColor" viewBox="0 0 24 24" aria-hidden="true"><path d="M8.29 20.251c7.547 0 11.675-6.253 11.675-11.675 0-.178 0-.355-.012-.53A8.348 8.348 0 0022 5.92a8.19 8.19 0 01-2.357.646 4.118 4.118 0 001.804-2.27 8.224 8.224 0 01-2.605.996 4.107 4.107 0 00-6.993 3.743 11.65 11.65 0 01-8.457-4.287 4.106 4.106 0 001.27 5.477A4.072 4.072 0 012.8 9.71v.052a4.105 4.105 0 003.292 4.022 4.095 4.095 0 01-1.853.07 4.108 4.108 0 003.834 2.85A8.233 8.233 0 012 18.407a11.616 11.616 0 006.29 1.84" /></svg></a>
+                </div>
+                <div class="footer-legal">
+                    <a href="#">Aviso de Privacidad</a>
+                    <p>&copy; 2024 CLESA. Todos los derechos reservados.</p>
+                </div>
+            </div>
+        </div>
+    </footer>
+
+    <!-- JavaScript for Mobile Menu -->
+    <script>
+        document.addEventListener('DOMContentLoaded', function () {
+            const mobileMenuButton = document.getElementById('mobile-menu-button');
+            const mobileMenu = document.getElementById('mobile-menu');
+            mobileMenuButton.addEventListener('click', function () {
+                mobileMenu.style.display = mobileMenu.style.display === 'block' ? 'none' : 'block';
+            });
+        });
+    </script>
+
+</body>
+</html>
+

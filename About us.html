@@ -1,0 +1,430 @@
+<!DOCTYPE html>
+<html lang="es" class="scroll-smooth">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Nosotros - CLESA</title>
+    
+    <!-- Google Fonts: Inter -->
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&display=swap" rel="stylesheet">
+    
+    <!-- Todos los estilos CSS -->
+    <style>
+        /* CSS Reset and Base Styles */
+        :root {
+            --clesa-navy: #0A192F;
+            --clesa-gold: #FFD700;
+            --clesa-light-gray: #F8F9FA;
+            --clesa-mid-blue: #3C5B6F;
+            --clesa-mid-gray: #6B7280;
+            --text-gray-800: #1F2937;
+            --text-gray-600: #4B5563;
+            --text-gray-300: #D1D5DB;
+            --white: #FFFFFF;
+        }
+
+        *, *::before, *::after {
+            box-sizing: border-box;
+            margin: 0;
+            padding: 0;
+        }
+
+        html {
+            scroll-behavior: smooth;
+        }
+
+        body {
+            font-family: 'Inter', sans-serif;
+            background-color: var(--white);
+            color: var(--text-gray-800);
+            line-height: 1.6;
+        }
+
+        a {
+            color: inherit;
+            text-decoration: none;
+        }
+
+        img {
+            max-width: 100%;
+            display: block;
+        }
+
+        /* Utility Classes */
+        .container {
+            width: 100%;
+            max-width: 1280px;
+            margin-left: auto;
+            margin-right: auto;
+            padding-left: 1.5rem;
+            padding-right: 1.5rem;
+        }
+
+        /* Header & Navigation */
+        .header {
+            background-color: rgba(255, 255, 255, 0.8);
+            backdrop-filter: blur(10px);
+            box-shadow: 0 4px 6px -1px rgba(0, 0, 0, 0.1);
+            position: sticky;
+            top: 0;
+            z-index: 50;
+        }
+
+        .navbar {
+            display: flex;
+            align-items: center;
+            justify-content: space-between;
+            padding-top: 1rem;
+            padding-bottom: 1rem;
+        }
+
+        .logo {
+            font-size: 1.5rem;
+            font-weight: 700;
+            color: var(--clesa-navy);
+        }
+
+        .desktop-menu {
+            display: none;
+            align-items: center;
+            gap: 1.5rem;
+        }
+
+        .nav-link {
+            color: var(--clesa-navy);
+            transition: color 0.3s ease;
+        }
+
+        .nav-link:hover {
+            color: var(--clesa-gold);
+        }
+        
+        .mobile-menu-button {
+            display: block;
+            background: none;
+            border: none;
+            cursor: pointer;
+        }
+        
+        .mobile-menu-button svg {
+            width: 1.5rem;
+            height: 1.5rem;
+            color: var(--clesa-navy);
+        }
+        
+        .mobile-menu {
+            display: none;
+            margin-top: 1rem;
+        }
+
+        .mobile-menu-link {
+            display: block;
+            padding: 0.5rem 1rem;
+            font-size: 0.875rem;
+            color: var(--clesa-navy);
+            border-radius: 0.375rem;
+        }
+
+        .mobile-menu-link:hover {
+            background-color: var(--clesa-light-gray);
+        }
+
+        /* Main Content "Nosotros" */
+        .main-content {
+            padding-top: 5rem;
+            padding-bottom: 5rem;
+        }
+        
+        .main-title {
+            font-size: 2.25rem;
+            font-weight: 700;
+            text-align: center;
+            color: var(--clesa-navy);
+            margin-bottom: 3rem;
+        }
+        
+        .nosotros-grid {
+            display: grid;
+            grid-template-columns: 1fr;
+            gap: 2rem;
+        }
+
+        .nosotros-card {
+            padding: 2.5rem 1.5rem;
+            border-radius: 0.75rem;
+            text-align: center;
+            color: var(--white);
+            transition: transform 0.3s ease, box-shadow 0.3s ease;
+        }
+
+        .nosotros-card:hover {
+            transform: scale(1.03);
+            box-shadow: 0 10px 20px rgba(0,0,0,0.2);
+        }
+
+        .card-quienes { background-color: var(--clesa-navy); }
+        .card-mision { background-color: var(--clesa-mid-gray); }
+        .card-vision { background-color: var(--clesa-mid-blue); }
+        .card-valores { background-color: #586875; }
+
+        .nosotros-icon {
+            height: 4rem;
+            width: 4rem;
+            margin-left: auto;
+            margin-right: auto;
+            margin-bottom: 1.5rem;
+            background-color: var(--white);
+            border-radius: 50%;
+            padding: 0.75rem;
+        }
+
+        .nosotros-icon svg {
+            width: 100%;
+            height: 100%;
+        }
+
+        .icon-quienes { color: var(--clesa-navy); }
+        .icon-mision { color: var(--clesa-mid-gray); }
+        .icon-vision { color: var(--clesa-mid-blue); }
+        .icon-valores { color: #586875; }
+
+        .nosotros-title {
+            font-size: 1.5rem;
+            font-weight: 700;
+            margin-bottom: 1rem;
+        }
+
+        .nosotros-text {
+            color: var(--text-gray-300);
+            font-size: 0.95rem;
+        }
+        
+        .nosotros-text ul {
+            list-style: none;
+            padding: 0;
+        }
+        
+        .nosotros-text li {
+            margin-bottom: 0.5rem;
+        }
+
+        /* Footer */
+        .footer {
+            background-color: var(--clesa-navy);
+            color: var(--white);
+            padding-top: 4rem;
+            padding-bottom: 4rem;
+        }
+
+        .footer-grid {
+            display: grid;
+            grid-template-columns: 1fr;
+            gap: 3rem;
+            margin-bottom: 2rem;
+        }
+
+        .footer-column h4 {
+            font-size: 1.25rem;
+            font-weight: 700;
+            color: var(--clesa-gold);
+            margin-bottom: 0.75rem;
+        }
+        
+        .footer-column p {
+            color: var(--text-gray-300);
+            margin-bottom: 0.5rem;
+        }
+
+        .footer-bottom {
+            border-top: 1px solid #374151;
+            padding-top: 2rem;
+            display: flex;
+            flex-direction: column;
+            justify-content: space-between;
+            align-items: center;
+        }
+
+        .social-icons {
+            display: flex;
+            gap: 1rem;
+            margin-bottom: 1rem;
+        }
+        
+        .social-icons a { color: #9CA3AF; transition: color 0.3s ease; }
+        .social-icons a:hover { color: var(--white); }
+        .social-icons svg { height: 1.5rem; width: 1.5rem; }
+
+        .footer-legal { text-align: center; }
+        .footer-legal a, .footer-legal p { font-size: 0.875rem; color: #9CA3AF; }
+        .footer-legal a:hover { color: var(--white); }
+        .footer-legal p { margin-top: 0.25rem; color: #6B7280; }
+
+        /* Responsive Styles */
+        @media (min-width: 768px) {
+            .desktop-menu { display: flex; }
+            .mobile-menu-button { display: none; }
+            .nosotros-grid { grid-template-columns: repeat(2, 1fr); }
+            .footer-grid { grid-template-columns: repeat(3, 1fr); }
+            .footer-bottom { flex-direction: row; }
+            .social-icons { margin-bottom: 0; }
+            .footer-legal { text-align: right; }
+        }
+        
+        @media (min-width: 1024px) {
+            .nosotros-grid { grid-template-columns: repeat(4, 1fr); }
+        }
+    </style>
+</head>
+<body class="bg-white">
+
+    <!-- Header & Navigation -->
+    <header class="header">
+        <nav class="container navbar">
+            <a href="index.html" class="logo">CLESA</a>
+            
+            <div class="desktop-menu">
+                <a href="index.html" class="nav-link">Inicio</a>
+                <a href="index.html#oferta" class="nav-link">Oferta Académica</a>
+                <a href="nosotros.html" class="nav-link">Nosotros</a>
+                <a href="#" class="nav-link">Testimonios</a>
+                <a href="#" class="nav-link">Novedades</a>
+                <a href="#" class="nav-link">Contacto</a>
+            </div>
+
+            <button id="mobile-menu-button" class="mobile-menu-button">
+                <svg fill="none" stroke="currentColor" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M4 6h16M4 12h16m-7 6h7"></path></svg>
+            </button>
+        </nav>
+
+        <!-- Mobile Menu -->
+        <div id="mobile-menu" class="mobile-menu container">
+            <a href="index.html" class="mobile-menu-link">Inicio</a>
+            <a href="index.html#oferta" class="mobile-menu-link">Oferta Académica</a>
+            <a href="nosotros.html" class="mobile-menu-link">Nosotros</a>
+            <a href="#" class="mobile-menu-link">Testimonios</a>
+            <a href="#" class="mobile-menu-link">Novedades</a>
+            <a href="#" class="mobile-menu-link">Contacto</a>
+        </div>
+    </header>
+
+    <!-- Main Content -->
+    <main class="main-content">
+        <div class="container">
+            <h1 class="main-title">Acerca de Nosotros</h1>
+            <div class="nosotros-grid">
+                
+                <!-- Card: ¿Quiénes Somos? -->
+                <div class="nosotros-card card-quienes">
+                    <div class="nosotros-icon icon-quienes">
+                        <svg viewBox="0 0 24 24" fill="currentColor"><path d="M16 11c1.66 0 2.99-1.34 2.99-3S17.66 5 16 5c-1.66 0-3 1.34-3 3s1.34 3 3 3zm-8 0c1.66 0 2.99-1.34 2.99-3S9.66 5 8 5C6.34 5 5 6.34 5 8s1.34 3 3 3zm0 2c-2.33 0-7 1.17-7 3.5V19h14v-2.5c0-2.33-4.67-3.5-7-3.5zm8 0c-.29 0-.62.02-.97.05 1.16.84 1.97 1.97 1.97 3.45V19h6v-2.5c0-2.33-4.67-3.5-7-3.5z"/></svg>
+                    </div>
+                    <h3 class="nosotros-title">¿QUIÉNES SOMOS?</h3>
+                    <p class="nosotros-text">
+                        Somos una empresa al servicio de la comunidad, comprometida en brindar productos académicos de formación y actualización profesional de calidad, que fortalezcan los recursos para el aprendizaje y el crecimiento cultural.
+                    </p>
+                </div>
+                
+                <!-- Card: Misión -->
+                <div class="nosotros-card card-mision">
+                    <div class="nosotros-icon icon-mision">
+                        <svg viewBox="0 0 24 24" fill="currentColor"><path d="M12 2C6.48 2 2 6.48 2 12s4.48 10 10 10 10-4.48 10-10S17.52 2 12 2zm-1 17.93c-3.95-.49-7-3.85-7-7.93 0-.62.08-1.21.21-1.79L9 15v1c0 1.1.9 2 2 2v1.93zm6.9-2.54c-.26-.81-1-1.39-1.9-1.39h-1v-3c0-.55-.45-1-1-1H8v-2h2c.55 0 1-.45 1-1V7h2c1.1 0 2-.9 2-2v-.41c2.93 1.19 5 4.06 5 7.41 0 2.08-.8 3.97-2.1 5.39z"/></svg>
+                    </div>
+                    <h3 class="nosotros-title">MISIÓN</h3>
+                    <p class="nosotros-text">
+                        Promover la Formación y Actualización Profesional, mediante el uso eficiente de la Tecnología, y así mismo creando el hábito de la lectura. Siempre brindando el apoyo a su inversión con excelentes becas y planes de financiamiento.
+                    </p>
+                </div>
+
+                <!-- Card: Visión -->
+                <div class="nosotros-card card-vision">
+                    <div class="nosotros-icon icon-vision">
+                        <svg viewBox="0 0 24 24" fill="currentColor"><path d="M12 4.5C7 4.5 2.73 7.61 1 12c1.73 4.39 6 7.5 11 7.5s9.27-3.11 11-7.5c-1.73-4.39-6-7.5-11-7.5zM12 17c-2.76 0-5-2.24-5-5s2.24-5 5-5 5 2.24 5 5-2.24 5-5 5zm0-8c-1.66 0-3 1.34-3 3s1.34 3 3 3 3-1.34 3-3-1.34-3-3-3z"/></svg>
+                    </div>
+                    <h3 class="nosotros-title">VISIÓN</h3>
+                    <p class="nosotros-text">
+                        Consolidar un liderazgo a nivel nacional en la distribución de productos educativos, que nos permita llegar al mayor número de personas en cumplimiento de nuestra misión.
+                    </p>
+                </div>
+                
+                <!-- Card: Valores -->
+                <div class="nosotros-card card-valores">
+                    <div class="nosotros-icon icon-valores">
+                        <svg viewBox="0 0 24 24" fill="currentColor"><path d="M12 2L2 7l10 5 10-5-10-5zM2 17l10 5 10-5-10-5-10 5z"/></svg>
+                    </div>
+                    <h3 class="nosotros-title">VALORES</h3>
+                    <div class="nosotros-text">
+                        <ul>
+                            <li>* Honestidad</li>
+                            <li>* Responsabilidad</li>
+                            <li>* Calidad</li>
+                            <li>* Respeto</li>
+                            <li>* Compromiso</li>
+                        </ul>
+                    </div>
+                </div>
+
+            </div>
+        </div>
+    </main>
+
+    <!-- Footer -->
+    <footer class="footer">
+        <div class="container">
+            <div class="footer-grid">
+                <!-- Sede Morelos -->
+                <div class="footer-column">
+                    <h4>Sede Morelos</h4>
+                    <p>Av. Universidad 123, Col. Chamilpa, Cuernavaca, Morelos.</p>
+                    <p>contacto.mor@clesa.edu</p>
+                    <p>(777) 123 4567</p>
+                </div>
+                <!-- Sede Puebla -->
+                <div class="footer-column">
+                    <h4>Sede Puebla</h4>
+                    <p>Blvd. Atlixco 456, Col. La Paz, Puebla, Puebla.</p>
+                    <p>contacto.pue@clesa.edu</p>
+                    <p>(222) 765 4321</p>
+                </div>
+                <!-- Sede San Luis Potosí -->
+                <div class="footer-column">
+                    <h4>Sede San Luis Potosí</h4>
+                    <p>Calle 5 de Mayo 789, Centro Histórico, San Luis Potosí.</p>
+                    <p>contacto.slp@clesa.edu</p>
+                    <p>(444) 987 6543</p>
+                </div>
+            </div>
+            <div class="footer-bottom">
+                <div class="social-icons">
+                    <!-- Social Media Icons -->
+                    <a href="#"><svg fill="currentColor" viewBox="0 0 24 24" aria-hidden="true"><path fill-rule="evenodd" d="M22 12c0-5.523-4.477-10-10-10S2 6.477 2 12c0 4.991 3.657 9.128 8.438 9.878v-6.987h-2.54V12h2.54V9.797c0-2.506 1.492-3.89 3.777-3.89 1.094 0 2.238.195 2.238.195v2.46h-1.26c-1.243 0-1.63.771-1.63 1.562V12h2.773l-.443 2.89h-2.33v6.988C18.343 21.128 22 16.991 22 12z" clip-rule="evenodd" /></svg></a>
+                    <a href="#"><svg fill="currentColor" viewBox="0 0 24 24" aria-hidden="true"><path fill-rule="evenodd" d="M12.315 2c2.43 0 2.784.013 3.808.06 1.064.049 1.791.218 2.427.465a4.902 4.902 0 011.772 1.153 4.902 4.902 0 011.153 1.772c.247.636.416 1.363.465 2.427.048 1.024.06 1.378.06 3.808s-.012 2.784-.06 3.808c-.049 1.064-.218 1.791-.465 2.427a4.902 4.902 0 01-1.153 1.772 4.902 4.902 0 01-1.772 1.153c-.636.247-1.363.416-2.427.465-1.024.048-1.378.06-3.808.06s-2.784-.012-3.808-.06c-1.064-.049-1.791-.218-2.427-.465a4.902 4.902 0 01-1.772-1.153 4.902 4.902 0 01-1.153-1.772c-.247-.636-.416-1.363-.465-2.427-.048-1.024-.06-1.378-.06-3.808s.012-2.784.06-3.808c.049-1.064.218-1.791.465-2.427a4.902 4.902 0 011.153-1.772A4.902 4.902 0 016.343 2.525c.636-.247 1.363-.416 2.427-.465C9.792 2.013 10.146 2 12.315 2zM12 7a5 5 0 100 10 5 5 0 000-10zm0 8a3 3 0 110-6 3 3 0 010 6zm5.75-9.25a1.25 1.25 0 100-2.5 1.25 1.25 0 000 2.5z" clip-rule="evenodd" /></svg></a>
+                    <a href="#"><svg fill="currentColor" viewBox="0 0 24 24" aria-hidden="true"><path d="M8.29 20.251c7.547 0 11.675-6.253 11.675-11.675 0-.178 0-.355-.012-.53A8.348 8.348 0 0022 5.92a8.19 8.19 0 01-2.357.646 4.118 4.118 0 001.804-2.27 8.224 8.224 0 01-2.605.996 4.107 4.107 0 00-6.993 3.743 11.65 11.65 0 01-8.457-4.287 4.106 4.106 0 001.27 5.477A4.072 4.072 0 012.8 9.71v.052a4.105 4.105 0 003.292 4.022 4.095 4.095 0 01-1.853.07 4.108 4.108 0 003.834 2.85A8.233 8.233 0 012 18.407a11.616 11.616 0 006.29 1.84" /></svg></a>
+                </div>
+                <div class="footer-legal">
+                    <a href="#">Aviso de Privacidad</a>
+                    <p>&copy; 2024 CLESA. Todos los derechos reservados.</p>
+                </div>
+            </div>
+        </div>
+    </footer>
+
+    <!-- JavaScript for Mobile Menu -->
+    <script>
+        document.addEventListener('DOMContentLoaded', function () {
+            const mobileMenuButton = document.getElementById('mobile-menu-button');
+            const mobileMenu = document.getElementById('mobile-menu');
+
+            mobileMenuButton.addEventListener('click', function () {
+                if (mobileMenu.style.display === 'block') {
+                    mobileMenu.style.display = 'none';
+                } else {
+                    mobileMenu.style.display = 'block';
+                }
+            });
+        });
+    </script>
+
+</body>
+</html>
