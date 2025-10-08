@@ -321,11 +321,16 @@
             .social-icons { margin-bottom: 0; }
             .footer-legal { text-align: right; }
         }
+        .phd-icon {
+  width: 48px;
+  height: 48px;
+  color: #1a202c; /* opcional */
+}
     </style>
 </head>
 <body>
 
-   <!-- Header & Navigation -->
+             <!-- Header & Navigation -->
     <header class="header">
         <nav class="container navbar">
             <a href="index.html" class="logo">
@@ -338,17 +343,17 @@
                 <div class="dropdown">
                     <a href="index.html#oferta" class="nav-link">Oferta Académica</a>
                     <div class="dropdown-content">
-                        <a href="doctorados.html" class="dropdown-link">Doctorados</a>
-                        <a href="maestrias.html" class="dropdown-link">Maestrías</a>
-                        <a href="licenciaturas.html" class="dropdown-link">Licenciaturas</a>
-                        <a href="diplomados.html" class="dropdown-link">Diplomados</a>
-                        <a href="bachillerato.html" class="dropdown-link">Bachillerato</a>
+                        <a href="../OFERTA ACADEMICA/Doctorados.html" class="dropdown-link">Doctorados</a>
+                        <a href="../OFERTA ACADEMICA/Maestrías.html" class="dropdown-link">Maestrías</a>
+                        <a href="../OFERTA ACADEMICA/Licenciaturas.html" class="dropdown-link">Licenciaturas</a>
+                        <a href="../OFERTA ACADEMICA/Diplomados.html" class="dropdown-link">Diplomados</a>
+                        <a href="../OFERTA ACADEMICA/Bachillerato.html" class="dropdown-link">Bachillerato</a>
                     </div>
                 </div>
-                <a href="nosotros.html" class="nav-link">Nosotros</a>
-                <a href="testimonios.html" class="nav-link">Testimonios</a>
-                <a href="novedades.html" class="nav-link">Novedades</a>
-                <a href="contacto.html" class="nav-link">Contacto</a>
+                <a href="../NOSOTROS/Nosotros.html" class="nav-link">Nosotros</a>
+                <a href="../TESTIMONIOS/testimonios.html" class="nav-link">Testimonios</a>
+                <a href="../NOVEDADES/Novedades.html" class="nav-link">Novedades</a>
+                <a href="../CONTACTO/Contacto.html" class="nav-link">Contacto</a>
             </div>
 
             <!-- Mobile Menu Button -->
@@ -366,17 +371,17 @@
                     <svg fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9 5l7 7-7 7"></path></svg>
                 </button>
                 <div id="mobile-submenu" class="mobile-submenu">
-                    <a href="doctorados.html" class="mobile-submenu-link">Doctorados</a>
-                    <a href="maestrias.html" class="mobile-submenu-link">Maestrías</a>
-                    <a href="licenciaturas.html" class="mobile-submenu-link">Licenciaturas</a>
-                    <a href="diplomados.html" class="mobile-submenu-link">Diplomados</a>
-                    <a href="bachillerato.html" class="mobile-submenu-link">Bachillerato</a>
+                    <a href="../OFERTA ACADEMICA/Doctorados.html" class="mobile-submenu-link">Doctorados</a>
+                    <a href="../OFERTA ACADEMICA/Maestrías.html" class="mobile-submenu-link">Maestrías</a>
+                    <a href="../OFERTA ACADEMICA/Licenciaturas.html" class="mobile-submenu-link">Licenciaturas</a>
+                    <a href="../OFERTA ACADEMICA/Diplomados.html" class="mobile-submenu-link">Diplomados</a>
+                    <a href="../OFERTA ACADEMICA/Bachillerato.html" class="mobile-submenu-link">Bachillerato</a>
                 </div>
             </div>
-            <a href="nosotros.html" class="mobile-menu-link">Nosotros</a>
-            <a href="testimonios.html" class="mobile-menu-link">Testimonios</a>
-            <a href="novedades.html" class="mobile-menu-link">Novedades</a>
-            <a href="contacto.html" class="mobile-menu-link">Contacto</a>
+            <a href="../NOSOTROS/Nosotros.html" class="mobile-menu-link">Nosotros</a>
+            <a href="../TESTIMONIOS/testimonios.html" class="mobile-menu-link">Testimonios</a>
+            <a href="../NOVEDADES/Novedades.html" class="mobile-menu-link">Novedades</a>
+            <a href="../CONTACTO/Contacto.html" class="mobile-menu-link">Contacto</a>
         </div>
     </header>
 
@@ -385,8 +390,25 @@
         <div class="container">
             <div class="title-container">
                 <!-- Ícono SVG añadido -->
-                <svg class="certificate-icon" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="currentColor"><path d="M0 0h24v24H0z" fill="none"/><path d="M5 13.18v4L12 21l7-3.82v-4L12 17l-7-3.82zM12 3L1 9l11 6 9-4.91V17h2V9L12 3z"/></svg>
-                <h1 class="main-title">Conoce nuestros diplomados</h1>
+                <svg class="phd-icon" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round">
+  <!-- Marco del diploma -->
+  <rect x="2" y="4" width="20" height="16" rx="2" ry="2"/>
+  
+  <!-- Birrete -->
+  <polygon points="12,5 7,7 12,9 17,7 12,5"/>
+  <line x1="12" y1="9" x2="12" y2="11"/>
+  <circle cx="12" cy="11.5" r="0.5"/>
+  
+  <!-- Texto PHD (simplificado con líneas representativas) -->
+  <line x1="5" y1="12" x2="9" y2="12"/>
+  <line x1="5" y1="14" x2="8" y2="14"/>
+  
+  <!-- Sello -->
+  <circle cx="17.5" cy="14" r="1.5"/>
+  <path d="M17.5 15.5v2l-1-.7-1 .7v-2"/>
+</svg>
+
+                <h1 class="main-title">Conoce nuestros Doctorados</h1>
             </div>
             <div class="cards-container">
                 
@@ -412,16 +434,7 @@
                     </a>
                 </div>
 
-                <div class="program-card">
-                    <a href="#">
-                        <img src="https://images.unsplash.com/photo-1456513080510-7bf3a84b82f8?q=80&w=1973&auto=format&fit=crop" alt="Persona leyendo un libro concentrada" class="card-image">
-                        <div class="card-content">
-                            <h3 class="card-title">Comprensión Lectora</h3>
-                            <p class="card-description">Potencia tus habilidades de análisis y pensamiento crítico a través de técnicas avanzadas de lectura y retención.</p>
-                            <span class="card-link">Ver plan de estudios &rarr;</span>
-                        </div>
-                    </a>
-                </div>
+
 
             </div>
         </div>
@@ -434,37 +447,31 @@
                 <!-- Sede Morelos -->
                 <div class="footer-column">
                     <h4>Sede Morelos</h4>
-                    <p>Av. Universidad 123, Col. Chamilpa, Cuernavaca, Morelos.</p>
+                    <p>Calle Trece Mza. H Lote 3. Fracc. Tarianes, Jiutepec. Mor. C.P 62577</p>
                     <p>contacto.mor@clesa.edu</p>
-                    <p>(777) 123 4567</p>
+                    <p>(777) 320-6566</p>
                 </div>
                 <!-- Sede Puebla -->
                 <div class="footer-column">
                     <h4>Sede Puebla</h4>
-                    <p>Blvd. Atlixco 456, Col. La Paz, Puebla, Puebla.</p>
+                    <p>AV. 31 PTE. 708 Int. 104 entre 7 y 9 Sur. Col. Chula Vista, Puebla, Puebla.</p>
                     <p>contacto.pue@clesa.edu</p>
-                    <p>(222) 765 4321</p>
+                    <p>(222) 211-0625</p>
                 </div>
                 <!-- Sede San Luis Potosí -->
                 <div class="footer-column">
                     <h4>Sede San Luis Potosí</h4>
-                    <p>Calle 5 de Mayo 789, Centro Histórico, San Luis Potosí.</p>
+                    <p>Antonio Otahegui N. 487 Col. Centro C.P 78000, San Luis Potosí. S.L.P</p>
                     <p>contacto.slp@clesa.edu</p>
-                    <p>(444) 987 6543</p>
+                    <p></p>
                 </div>
             </div>
             <div class="footer-bottom">
                 <div class="social-icons">
                     <!-- Social Media Icons -->
-                    <a href="#">
-                        <svg fill="currentColor" viewBox="0 0 24 24" aria-hidden="true"><path fill-rule="evenodd" d="M22 12c0-5.523-4.477-10-10-10S2 6.477 2 12c0 4.991 3.657 9.128 8.438 9.878v-6.987h-2.54V12h2.54V9.797c0-2.506 1.492-3.89 3.777-3.89 1.094 0 2.238.195 2.238.195v2.46h-1.26c-1.243 0-1.63.771-1.63 1.562V12h2.773l-.443 2.89h-2.33v6.988C18.343 21.128 22 16.991 22 12z" clip-rule="evenodd" /></svg>
-                    </a>
-                    <a href="#">
-                         <svg fill="currentColor" viewBox="0 0 24 24" aria-hidden="true"><path fill-rule="evenodd" d="M12.315 2c2.43 0 2.784.013 3.808.06 1.064.049 1.791.218 2.427.465a4.902 4.902 0 011.772 1.153 4.902 4.902 0 011.153 1.772c.247.636.416 1.363.465 2.427.048 1.024.06 1.378.06 3.808s-.012 2.784-.06 3.808c-.049 1.064-.218 1.791-.465 2.427a4.902 4.902 0 01-1.153 1.772 4.902 4.902 0 01-1.772 1.153c-.636.247-1.363.416-2.427.465-1.024.048-1.378.06-3.808.06s-2.784-.012-3.808-.06c-1.064-.049-1.791-.218-2.427-.465a4.902 4.902 0 01-1.772-1.153 4.902 4.902 0 01-1.153-1.772c-.247-.636-.416 1.363-.465-2.427-.048-1.024-.06-1.378-.06-3.808s.012-2.784.06-3.808c.049-1.064.218-1.791.465-2.427a4.902 4.902 0 011.153-1.772A4.902 4.902 0 016.343 2.525c.636-.247 1.363-.416 2.427-.465C9.792 2.013 10.146 2 12.315 2zM12 7a5 5 0 100 10 5 5 0 000-10zm0 8a3 3 0 110-6 3 3 0 010 6zm5.75-9.25a1.25 1.25 0 100-2.5 1.25 1.25 0 000 2.5z" clip-rule="evenodd" /></svg>
-                    </a>
-                    <a href="#">
-                        <svg fill="currentColor" viewBox="0 0 24 24" aria-hidden="true"><path d="M8.29 20.251c7.547 0 11.675-6.253 11.675-11.675 0-.178 0-.355-.012-.53A8.348 8.348 0 0022 5.92a8.19 8.19 0 01-2.357.646 4.118 4.118 0 001.804-2.27 8.224 8.224 0 01-2.605.996 4.107 4.107 0 00-6.993 3.743 11.65 11.65 0 01-8.457-4.287 4.106 4.106 0 001.27 5.477A4.072 4.072 0 012.8 9.71v.052a4.105 4.105 0 003.292 4.022 4.095 4.095 0 01-1.853.07 4.108 4.108 0 003.834 2.85A8.233 8.233 0 012 18.407a11.616 11.616 0 006.29 1.84" /></svg>
-                    </a>
+                    <a href="#"><svg fill="currentColor" viewBox="0 0 24 24" aria-hidden="true"><path fill-rule="evenodd" d="M22 12c0-5.523-4.477-10-10-10S2 6.477 2 12c0 4.991 3.657 9.128 8.438 9.878v-6.987h-2.54V12h2.54V9.797c0-2.506 1.492-3.89 3.777-3.89 1.094 0 2.238.195 2.238.195v2.46h-1.26c-1.243 0-1.63.771-1.63 1.562V12h2.773l-.443 2.89h-2.33v6.988C18.343 21.128 22 16.991 22 12z" clip-rule="evenodd" /></svg></a>
+                    <a href="#"><svg fill="currentColor" viewBox="0 0 24 24" aria-hidden="true"><path fill-rule="evenodd" d="M12.315 2c2.43 0 2.784.013 3.808.06 1.064.049 1.791.218 2.427.465a4.902 4.902 0 011.772 1.153 4.902 4.902 0 011.153 1.772c.247.636.416 1.363.465 2.427.048 1.024.06 1.378.06 3.808s-.012 2.784-.06 3.808c-.049 1.064-.218 1.791-.465 2.427a4.902 4.902 0 01-1.153 1.772 4.902 4.902 0 01-1.772 1.153c-.636.247-1.363.416-2.427.465-1.024.048-1.378.06-3.808.06s-2.784-.012-3.808-.06c-1.064-.049-1.791-.218-2.427-.465a4.902 4.902 0 01-1.772-1.153 4.902 4.902 0 01-1.153-1.772c-.247-.636-.416-1.363-.465-2.427-.048-1.024-.06-1.378-.06-3.808s.012-2.784.06-3.808c.049-1.064.218-1.791.465-2.427a4.902 4.902 0 011.153-1.772A4.902 4.902 0 016.343 2.525c.636-.247 1.363-.416 2.427-.465C9.792 2.013 10.146 2 12.315 2zM12 7a5 5 0 100 10 5 5 0 000-10zm0 8a3 3 0 110-6 3 3 0 010 6zm5.75-9.25a1.25 1.25 0 100-2.5 1.25 1.25 0 000 2.5z" clip-rule="evenodd" /></svg></a>
+                    <a href="#"><svg fill="currentColor" viewBox="0 0 24 24" aria-hidden="true"><path d="M8.29 20.251c7.547 0 11.675-6.253 11.675-11.675 0-.178 0-.355-.012-.53A8.348 8.348 0 0022 5.92a8.19 8.19 0 01-2.357.646 4.118 4.118 0 001.804-2.27 8.224 8.224 0 01-2.605.996 4.107 4.107 0 00-6.993 3.743 11.65 11.65 0 01-8.457-4.287 4.106 4.106 0 001.27 5.477A4.072 4.072 0 012.8 9.71v.052a4.105 4.105 0 003.292 4.022 4.095 4.095 0 01-1.853.07 4.108 4.108 0 003.834 2.85A8.233 8.233 0 012 18.407a11.616 11.616 0 006.29 1.84" /></svg></a>
                 </div>
                 <div class="footer-legal">
                     <a href="#">Aviso de Privacidad</a>
@@ -473,6 +480,7 @@
             </div>
         </div>
     </footer>
+
 
    <!-- JavaScript for Mobile Menu & Form -->
     <script>
