@@ -14,9 +14,6 @@
     <style>
         /* CSS Reset and Base Styles */
         :root {
-            /* * GUÍA DE COLORES PARA MODIFICACIÓN FÁCIL
-             * Aquí puedes cambiar los colores principales del sitio.
-            */
             --clesa-navy: #0A192F;
             --clesa-gold: #FFD700;
             --clesa-light-gray: #F8F9FA;
@@ -68,68 +65,89 @@
             background-color: rgba(255, 255, 255, 0.8);
             backdrop-filter: blur(10px);
             box-shadow: 0 4px 6px -1px rgba(0, 0, 0, 0.1);
-            position: sticky;
-            top: 0;
-            z-index: 50;
+            position: sticky; top: 0; z-index: 50;
         }
-
-        .navbar {
-            display: flex;
-            align-items: center;
-            justify-content: space-between;
-            padding-top: 1rem;
-            padding-bottom: 1rem;
+        .navbar { display: flex; align-items: center; justify-content: space-between; padding-top: 1rem; padding-bottom: 1rem; }
+        .logo img { height: 40px; }
+        .desktop-menu { display: none; }
+        .nav-link { color: var(--clesa-navy); transition: color 0.3s ease; }
+        .nav-link:hover { color: var(--clesa-gold); }
+        .mobile-menu-button { display: block; background: none; border: none; cursor: pointer; }
+        .mobile-menu-button svg { width: 1.5rem; height: 1.5rem; color: var(--clesa-navy); }
+        .mobile-menu { display: none; padding-bottom: 1rem; }
+        .mobile-menu-link { display: block; padding: 0.75rem 0; font-size: 0.875rem; color: var(--clesa-navy); border-radius: 0.375rem; }
+        
+        /* Dropdown Menu (Desktop) */
+        .dropdown {
+            position: relative;
+            display: inline-block;
         }
-
-        .logo {
-            font-size: 1.5rem;
-            font-weight: 700;
+        .dropdown-content {
+            display: none;
+            position: absolute;
+            background-color: white;
+            min-width: 220px;
+            box-shadow: 0 8px 16px 0 rgba(0,0,0,0.1);
+            z-index: 10;
+            border-radius: 0.5rem;
+            padding-top: 0.5rem;
+            padding-bottom: 0.5rem;
+            opacity: 0;
+            visibility: hidden;
+            transform: translateY(10px);
+            transition: opacity 0.3s ease, transform 0.3s ease, visibility 0.3s;
+        }
+        .dropdown:hover .dropdown-content {
+            display: block;
+            opacity: 1;
+            visibility: visible;
+            transform: translateY(0);
+        }
+        .dropdown-link {
             color: var(--clesa-navy);
+            padding: 0.75rem 1.5rem;
+            text-decoration: none;
+            display: block;
+            font-size: 0.9rem;
         }
-
-        .desktop-menu {
-            display: none; /* Hidden on mobile */
-            align-items: center;
-            gap: 1.5rem;
-        }
-
-        .nav-link {
-            color: var(--clesa-navy);
-            transition: color 0.3s ease;
-        }
-
-        .nav-link:hover {
+        .dropdown-link:hover {
+            background-color: var(--clesa-light-gray);
             color: var(--clesa-gold);
         }
-        
-        .mobile-menu-button {
-            display: block; /* Shown on mobile */
+
+        /* Mobile Submenu */
+        .mobile-submenu {
+            display: none;
+            padding-left: 1rem;
+            margin-top: 0.5rem;
+            border-left: 2px solid #e5e7eb;
+        }
+        .mobile-submenu-link {
+            display: block;
+            padding: 0.5rem 0;
+            font-size: 0.875rem;
+            color: #4B5563; /* text-gray-600 */
+        }
+        .oferta-toggle-btn {
+            width: 100%;
+            text-align: left;
             background: none;
             border: none;
             cursor: pointer;
-        }
-        
-        .mobile-menu-button svg {
-            width: 1.5rem;
-            height: 1.5rem;
-            color: var(--clesa-navy);
-        }
-        
-        .mobile-menu {
-            display: none; /* Hidden by default */
-            margin-top: 1rem;
-        }
-
-        .mobile-menu-link {
-            display: block;
-            padding: 0.5rem 1rem;
+            padding: 0.75rem 0;
             font-size: 0.875rem;
             color: var(--clesa-navy);
-            border-radius: 0.375rem;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
         }
-
-        .mobile-menu-link:hover {
-            background-color: var(--clesa-light-gray);
+        .oferta-toggle-btn svg {
+            width: 1rem;
+            height: 1rem;
+            transition: transform 0.3s ease;
+        }
+        .oferta-toggle-btn.open svg {
+            transform: rotate(90deg);
         }
 
         /* Main Content */
@@ -275,7 +293,7 @@
 
         /* Responsive Styles */
         @media (min-width: 768px) {
-            .desktop-menu { display: flex; }
+            .desktop-menu { display: flex; align-items: center; gap: 1.5rem; }
             .mobile-menu-button { display: none; }
             .cards-container { grid-template-columns: repeat(2, 1fr); }
             /* Centra la última tarjeta si es impar */
@@ -292,22 +310,35 @@
         }
     </style>
 </head>
-<body class="bg-clesa-light-gray text-gray-800">
+<body>
 
     <!-- Header & Navigation -->
     <header class="header">
         <nav class="container navbar">
-            <a href="index.html" class="logo">CLESA</a>
+            <a href="index.html" class="logo">
+                <img src="https://placehold.co/150x50/0A192F/FFD700?text=CLESA" alt="Logo de CLESA">
+            </a>
             
+            <!-- Desktop Menu -->
             <div class="desktop-menu">
                 <a href="index.html" class="nav-link">Inicio</a>
-                <a href="index.html#oferta" class="nav-link">Oferta Académica</a>
-                <a href="#" class="nav-link">Nosotros</a>
-                <a href="#" class="nav-link">Testimonios</a>
-                <a href="#" class="nav-link">Novedades</a>
-                <a href="#" class="nav-link">Contacto</a>
+                <div class="dropdown">
+                    <a href="index.html#oferta" class="nav-link">Oferta Académica</a>
+                    <div class="dropdown-content">
+                        <a href="doctorados.html" class="dropdown-link">Doctorados</a>
+                        <a href="maestrias.html" class="dropdown-link">Maestrías</a>
+                        <a href="licenciaturas.html" class="dropdown-link">Licenciaturas</a>
+                        <a href="diplomados.html" class="dropdown-link">Diplomados</a>
+                        <a href="bachillerato.html" class="dropdown-link">Bachillerato</a>
+                    </div>
+                </div>
+                <a href="nosotros.html" class="nav-link">Nosotros</a>
+                <a href="testimonios.html" class="nav-link">Testimonios</a>
+                <a href="novedades.html" class="nav-link">Novedades</a>
+                <a href="contacto.html" class="nav-link">Contacto</a>
             </div>
 
+            <!-- Mobile Menu Button -->
             <button id="mobile-menu-button" class="mobile-menu-button">
                 <svg fill="none" stroke="currentColor" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M4 6h16M4 12h16m-7 6h7"></path></svg>
             </button>
@@ -316,11 +347,23 @@
         <!-- Mobile Menu -->
         <div id="mobile-menu" class="mobile-menu container">
             <a href="index.html" class="mobile-menu-link">Inicio</a>
-            <a href="index.html#oferta" class="mobile-menu-link">Oferta Académica</a>
-            <a href="#" class="mobile-menu-link">Nosotros</a>
-            <a href="#" class="mobile-menu-link">Testimonios</a>
-            <a href="#" class="mobile-menu-link">Novedades</a>
-            <a href="#" class="mobile-menu-link">Contacto</a>
+            <div>
+                <button id="oferta-toggle" class="oferta-toggle-btn">
+                    <span>Oferta Académica</span>
+                    <svg fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9 5l7 7-7 7"></path></svg>
+                </button>
+                <div id="mobile-submenu" class="mobile-submenu">
+                    <a href="doctorados.html" class="mobile-submenu-link">Doctorados</a>
+                    <a href="maestrias.html" class="mobile-submenu-link">Maestrías</a>
+                    <a href="licenciaturas.html" class="mobile-submenu-link">Licenciaturas</a>
+                    <a href="diplomados.html" class="mobile-submenu-link">Diplomados</a>
+                    <a href="bachillerato.html" class="mobile-submenu-link">Bachillerato</a>
+                </div>
+            </div>
+            <a href="nosotros.html" class="mobile-menu-link">Nosotros</a>
+            <a href="testimonios.html" class="mobile-menu-link">Testimonios</a>
+            <a href="novedades.html" class="mobile-menu-link">Novedades</a>
+            <a href="contacto.html" class="mobile-menu-link">Contacto</a>
         </div>
     </header>
 
@@ -444,7 +487,7 @@
                         <svg fill="currentColor" viewBox="0 0 24 24" aria-hidden="true"><path fill-rule="evenodd" d="M22 12c0-5.523-4.477-10-10-10S2 6.477 2 12c0 4.991 3.657 9.128 8.438 9.878v-6.987h-2.54V12h2.54V9.797c0-2.506 1.492-3.89 3.777-3.89 1.094 0 2.238.195 2.238.195v2.46h-1.26c-1.243 0-1.63.771-1.63 1.562V12h2.773l-.443 2.89h-2.33v6.988C18.343 21.128 22 16.991 22 12z" clip-rule="evenodd" /></svg>
                     </a>
                     <a href="#">
-                         <svg fill="currentColor" viewBox="0 0 24 24" aria-hidden="true"><path fill-rule="evenodd" d="M12.315 2c2.43 0 2.784.013 3.808.06 1.064.049 1.791.218 2.427.465a4.902 4.902 0 011.772 1.153 4.902 4.902 0 011.153 1.772c.247.636.416 1.363.465 2.427.048 1.024.06 1.378.06 3.808s-.012 2.784-.06 3.808c-.049 1.064-.218 1.791-.465 2.427a4.902 4.902 0 01-1.153 1.772 4.902 4.902 0 01-1.772 1.153c-.636.247-1.363.416-2.427.465-1.024.048-1.378.06-3.808.06s-2.784-.012-3.808-.06c-1.064-.049-1.791-.218-2.427-.465a4.902 4.902 0 01-1.772-1.153 4.902 4.902 0 01-1.153-1.772c-.247-.636-.416-1.363-.465-2.427-.048-1.024-.06-1.378-.06-3.808s.012-2.784.06-3.808c.049-1.064.218-1.791.465-2.427a4.902 4.902 0 011.153-1.772A4.902 4.902 0 016.343 2.525c.636-.247 1.363-.416 2.427-.465C9.792 2.013 10.146 2 12.315 2zM12 7a5 5 0 100 10 5 5 0 000-10zm0 8a3 3 0 110-6 3 3 0 010 6zm5.75-9.25a1.25 1.25 0 100-2.5 1.25 1.25 0 000 2.5z" clip-rule="evenodd" /></svg>
+                         <svg fill="currentColor" viewBox="0 0 24 24" aria-hidden="true"><path fill-rule="evenodd" d="M12.315 2c2.43 0 2.784.013 3.808.06 1.064.049 1.791.218 2.427.465a4.902 4.902 0 011.772 1.153 4.902 4.902 0 011.153 1.772c.247.636.416 1.363.465 2.427.048 1.024.06 1.378.06 3.808s-.012 2.784-.06 3.808c-.049 1.064-.218 1.791-.465 2.427a4.902 4.902 0 01-1.153 1.772 4.902 4.902 0 01-1.772 1.153c-.636.247-1.363.416-2.427.465-1.024.048-1.378.06-3.808.06s-2.784-.012-3.808-.06c-1.064-.049-1.791-.218-2.427-.465a4.902 4.902 0 01-1.772-1.153 4.902 4.902 0 01-1.153-1.772c-.247-.636-.416 1.363-.465-2.427-.048-1.024-.06-1.378-.06-3.808s.012-2.784.06-3.808c.049-1.064.218-1.791.465-2.427a4.902 4.902 0 011.153-1.772A4.902 4.902 0 016.343 2.525c.636-.247 1.363-.416 2.427-.465C9.792 2.013 10.146 2 12.315 2zM12 7a5 5 0 100 10 5 5 0 000-10zm0 8a3 3 0 110-6 3 3 0 010 6zm5.75-9.25a1.25 1.25 0 100-2.5 1.25 1.25 0 000 2.5z" clip-rule="evenodd" /></svg>
                     </a>
                     <a href="#">
                         <svg fill="currentColor" viewBox="0 0 24 24" aria-hidden="true"><path d="M8.29 20.251c7.547 0 11.675-6.253 11.675-11.675 0-.178 0-.355-.012-.53A8.348 8.348 0 0022 5.92a8.19 8.19 0 01-2.357.646 4.118 4.118 0 001.804-2.27 8.224 8.224 0 01-2.605.996 4.107 4.107 0 00-6.993 3.743 11.65 11.65 0 01-8.457-4.287 4.106 4.106 0 001.27 5.477A4.072 4.072 0 012.8 9.71v.052a4.105 4.105 0 003.292 4.022 4.095 4.095 0 01-1.853.07 4.108 4.108 0 003.834 2.85A8.233 8.233 0 012 18.407a11.616 11.616 0 006.29 1.84" /></svg>
@@ -458,19 +501,27 @@
         </div>
     </footer>
 
-    <!-- JavaScript for Mobile Menu -->
+   <!-- JavaScript for Mobile Menu -->
     <script>
         document.addEventListener('DOMContentLoaded', function () {
+            // Mobile Menu
             const mobileMenuButton = document.getElementById('mobile-menu-button');
             const mobileMenu = document.getElementById('mobile-menu');
+            if(mobileMenuButton) {
+                mobileMenuButton.addEventListener('click', () => {
+                    mobileMenu.style.display = mobileMenu.style.display === 'block' ? 'none' : 'block';
+                });
+            }
 
-            mobileMenuButton.addEventListener('click', function () {
-                if (mobileMenu.style.display === 'block') {
-                    mobileMenu.style.display = 'none';
-                } else {
-                    mobileMenu.style.display = 'block';
-                }
-            });
+            // Mobile Submenu Toggle
+            const ofertaToggleButton = document.getElementById('oferta-toggle');
+            const mobileSubmenu = document.getElementById('mobile-submenu');
+            if(ofertaToggleButton) {
+                ofertaToggleButton.addEventListener('click', () => {
+                    ofertaToggleButton.classList.toggle('open');
+                    mobileSubmenu.style.display = mobileSubmenu.style.display === 'block' ? 'none' : 'block';
+                });
+            }
         });
     </script>
 

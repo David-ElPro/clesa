@@ -62,26 +62,95 @@
             padding-right: 1.5rem;
         }
 
-        /* Header & Navigation */
+                       /* Header & Navigation */
         .header {
-            background-color: rgba(255, 255, 255, 0.8);
+             background-color: rgba(255, 255, 255, 0.8);
             backdrop-filter: blur(10px);
             box-shadow: 0 4px 6px -1px rgba(0, 0, 0, 0.1);
             position: sticky; top: 0; z-index: 50;
         }
-        .navbar {
-            display: flex; align-items: center; justify-content: space-between;
-            padding-top: 1rem; padding-bottom: 1rem;
-        }
-        .logo { font-size: 1.5rem; font-weight: 700; color: var(--clesa-navy); }
-        .desktop-menu { display: none; align-items: center; gap: 1.5rem; }
+        .navbar { display: flex; align-items: center; justify-content: space-between; padding-top: 1rem; padding-bottom: 1rem; }
+        .logo img { height: 40px; }
+        .desktop-menu { display: none; }
         .nav-link { color: var(--clesa-navy); transition: color 0.3s ease; }
         .nav-link:hover { color: var(--clesa-gold); }
         .mobile-menu-button { display: block; background: none; border: none; cursor: pointer; }
         .mobile-menu-button svg { width: 1.5rem; height: 1.5rem; color: var(--clesa-navy); }
-        .mobile-menu { display: none; margin-top: 1rem; }
-        .mobile-menu-link { display: block; padding: 0.5rem 1rem; font-size: 0.875rem; color: var(--clesa-navy); border-radius: 0.375rem; }
-        .mobile-menu-link:hover { background-color: var(--clesa-light-gray); }
+        .mobile-menu { display: none; padding-bottom: 1rem; }
+        .mobile-menu-link { display: block; padding: 0.75rem 0; font-size: 0.875rem; color: var(--clesa-navy); border-radius: 0.375rem; }
+        
+        /* Dropdown Menu (Desktop) */
+        .dropdown {
+            position: relative;
+            display: inline-block;
+        }
+        .dropdown-content {
+            display: none;
+            position: absolute;
+            background-color: white;
+            min-width: 220px;
+            box-shadow: 0 8px 16px 0 rgba(0,0,0,0.1);
+            z-index: 10;
+            border-radius: 0.5rem;
+            padding-top: 0.5rem;
+            padding-bottom: 0.5rem;
+            opacity: 0;
+            visibility: hidden;
+            transform: translateY(10px);
+            transition: opacity 0.3s ease, transform 0.3s ease, visibility 0.3s;
+        }
+        .dropdown:hover .dropdown-content {
+            display: block;
+            opacity: 1;
+            visibility: visible;
+            transform: translateY(0);
+        }
+        .dropdown-link {
+            color: var(--clesa-navy);
+            padding: 0.75rem 1.5rem;
+            text-decoration: none;
+            display: block;
+            font-size: 0.9rem;
+        }
+        .dropdown-link:hover {
+            background-color: var(--clesa-light-gray);
+            color: var(--clesa-gold);
+        }
+
+        /* Mobile Submenu */
+        .mobile-submenu {
+            display: none;
+            padding-left: 1rem;
+            margin-top: 0.5rem;
+            border-left: 2px solid #e5e7eb;
+        }
+        .mobile-submenu-link {
+            display: block;
+            padding: 0.5rem 0;
+            font-size: 0.875rem;
+            color: #4B5563; /* text-gray-600 */
+        }
+        .oferta-toggle-btn {
+            width: 100%;
+            text-align: left;
+            background: none;
+            border: none;
+            cursor: pointer;
+            padding: 0.75rem 0;
+            font-size: 0.875rem;
+            color: var(--clesa-navy);
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+        }
+        .oferta-toggle-btn svg {
+            width: 1rem;
+            height: 1rem;
+            transition: transform 0.3s ease;
+        }
+        .oferta-toggle-btn.open svg {
+            transform: rotate(90deg);
+        }
 
         /* Main Content */
         .main-content {
@@ -224,7 +293,7 @@
 
         /* Responsive Styles */
         @media (min-width: 768px) {
-            .desktop-menu { display: flex; }
+            .desktop-menu { display: flex; align-items: center; gap: 1.5rem; }
             .mobile-menu-button { display: none; }
             .modules-grid { grid-template-columns: repeat(2, 1fr); }
             .requirements-grid { grid-template-columns: repeat(3, 1fr); }
@@ -242,30 +311,58 @@
 </head>
 <body>
 
-    <!-- Header & Navigation -->
+      <!-- Header & Navigation -->
     <header class="header">
         <nav class="container navbar">
-            <a href="index.html" class="logo">CLESA</a>
+            <a href="index.html" class="logo">
+                <img src="https://placehold.co/150x50/0A192F/FFD700?text=CLESA" alt="Logo de CLESA">
+            </a>
+            
+            <!-- Desktop Menu -->
             <div class="desktop-menu">
                 <a href="index.html" class="nav-link">Inicio</a>
-                <a href="index.html#oferta" class="nav-link">Oferta Académica</a>
+                <div class="dropdown">
+                    <a href="index.html#oferta" class="nav-link">Oferta Académica</a>
+                    <div class="dropdown-content">
+                        <a href="doctorados.html" class="dropdown-link">Doctorados</a>
+                        <a href="maestrias.html" class="dropdown-link">Maestrías</a>
+                        <a href="licenciaturas.html" class="dropdown-link">Licenciaturas</a>
+                        <a href="diplomados.html" class="dropdown-link">Diplomados</a>
+                        <a href="bachillerato.html" class="dropdown-link">Bachillerato</a>
+                    </div>
+                </div>
                 <a href="nosotros.html" class="nav-link">Nosotros</a>
-                <a href="#" class="nav-link">Testimonios</a>
-                <a href="#" class="nav-link">Novedades</a>
-                <a href="#" class="nav-link">Contacto</a>
+                <a href="testimonios.html" class="nav-link">Testimonios</a>
+                <a href="novedades.html" class="nav-link">Novedades</a>
+                <a href="contacto.html" class="nav-link">Contacto</a>
             </div>
+
+            <!-- Mobile Menu Button -->
             <button id="mobile-menu-button" class="mobile-menu-button">
-                <svg fill="none" stroke="currentColor" viewBox="0 0 24" xmlns="http://www.w3.org/2000/svg"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M4 6h16M4 12h16m-7 6h7"></path></svg>
+                <svg fill="none" stroke="currentColor" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M4 6h16M4 12h16m-7 6h7"></path></svg>
             </button>
         </nav>
+
         <!-- Mobile Menu -->
         <div id="mobile-menu" class="mobile-menu container">
             <a href="index.html" class="mobile-menu-link">Inicio</a>
-            <a href="index.html#oferta" class="mobile-menu-link">Oferta Académica</a>
+            <div>
+                <button id="oferta-toggle" class="oferta-toggle-btn">
+                    <span>Oferta Académica</span>
+                    <svg fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9 5l7 7-7 7"></path></svg>
+                </button>
+                <div id="mobile-submenu" class="mobile-submenu">
+                    <a href="doctorados.html" class="mobile-submenu-link">Doctorados</a>
+                    <a href="maestrias.html" class="mobile-submenu-link">Maestrías</a>
+                    <a href="licenciaturas.html" class="mobile-submenu-link">Licenciaturas</a>
+                    <a href="diplomados.html" class="mobile-submenu-link">Diplomados</a>
+                    <a href="bachillerato.html" class="mobile-submenu-link">Bachillerato</a>
+                </div>
+            </div>
             <a href="nosotros.html" class="mobile-menu-link">Nosotros</a>
-            <a href="#" class="mobile-menu-link">Testimonios</a>
-            <a href="#" class="mobile-menu-link">Novedades</a>
-            <a href="#" class="mobile-menu-link">Contacto</a>
+            <a href="testimonios.html" class="mobile-menu-link">Testimonios</a>
+            <a href="novedades.html" class="mobile-menu-link">Novedades</a>
+            <a href="contacto.html" class="mobile-menu-link">Contacto</a>
         </div>
     </header>
 
@@ -344,13 +441,25 @@
 
     <!-- JavaScript for Mobile Menu and Scroll Animations -->
     <script>
-        document.addEventListener('DOMContentLoaded', function () {
-            // Mobile Menu Toggle
+document.addEventListener('DOMContentLoaded', function () {
+            // Mobile Menu
             const mobileMenuButton = document.getElementById('mobile-menu-button');
             const mobileMenu = document.getElementById('mobile-menu');
-            mobileMenuButton.addEventListener('click', function () {
-                mobileMenu.style.display = mobileMenu.style.display === 'block' ? 'none' : 'block';
-            });
+            if(mobileMenuButton) {
+                mobileMenuButton.addEventListener('click', () => {
+                    mobileMenu.style.display = mobileMenu.style.display === 'block' ? 'none' : 'block';
+                });
+            }
+
+            // Mobile Submenu Toggle
+            const ofertaToggleButton = document.getElementById('oferta-toggle');
+            const mobileSubmenu = document.getElementById('mobile-submenu');
+            if(ofertaToggleButton) {
+                ofertaToggleButton.addEventListener('click', () => {
+                    ofertaToggleButton.classList.toggle('open');
+                    mobileSubmenu.style.display = mobileSubmenu.style.display === 'block' ? 'none' : 'block';
+                });
+            }
 
             // Scroll Animation Logic
             const scrollElements = document.querySelectorAll('.scroll-animate');
