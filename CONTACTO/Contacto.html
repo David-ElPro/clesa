@@ -330,7 +330,7 @@
 
         <!-- Mobile Menu -->
         <div id="mobile-menu" class="mobile-menu container">
-            <a href="index.html" class="mobile-menu-link">Inicio</a>
+            <a href="../index.html" class="mobile-menu-link">Inicio</a>
             <div>
                 <button id="oferta-toggle" class="oferta-toggle-btn">
                     <span>Oferta Académica</span>
@@ -440,13 +440,24 @@
     <!-- JavaScript -->
     <script>
 document.addEventListener('DOMContentLoaded', function () {
-    // --- Lógica del menú móvil (la dejamos como estaba) ---
-    const mobileMenuButton = document.getElementById('mobile-menu-button');
-    const mobileMenu = document.getElementById('mobile-menu');
-    if(mobileMenuButton) { /* ...código del menú... */ }
-    const ofertaToggleButton = document.getElementById('oferta-toggle');
-    const mobileSubmenu = document.getElementById('mobile-submenu');
-    if(ofertaToggleButton) { /* ...código del submenú... */ }
+       // Mobile Menu
+            const mobileMenuButton = document.getElementById('mobile-menu-button');
+            const mobileMenu = document.getElementById('mobile-menu');
+            if(mobileMenuButton) {
+                mobileMenuButton.addEventListener('click', () => {
+                    mobileMenu.style.display = mobileMenu.style.display === 'block' ? 'none' : 'block';
+                });
+            }
+
+            // Mobile Submenu Toggle
+            const ofertaToggleButton = document.getElementById('oferta-toggle');
+            const mobileSubmenu = document.getElementById('mobile-submenu');
+            if(ofertaToggleButton) {
+                ofertaToggleButton.addEventListener('click', () => {
+                    ofertaToggleButton.classList.toggle('open');
+                    mobileSubmenu.style.display = mobileSubmenu.style.display === 'block' ? 'none' : 'block';
+                });
+            }
 
     // --- Nueva lógica para el formulario de contacto ---
     const contactForm = document.querySelector('.contact-form-container form');
